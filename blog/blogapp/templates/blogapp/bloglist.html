@@ -1,20 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'blog/base.html' %}
 
-    {% for blog in blogs %}
-    <ul>
-        <li>Title: {{ blog.title }}</li>
-        <li>Description: {{ blog.description }}</li>
-        <li>Author: {{ blog.author }}</li>
-        <li>Created date: {{ blog.created_at }}</li>
-        <li>Updated date: {{ blog.updated_at }}</li>
-    </ul>
-    {% endfor %}
-</body>
-</html>
+    {% block content %}
+
+
+        <div class="container">
+            <h1 class="text-center">Most Epic Blogs</h1>
+            <p class="text-center">Read the blog that suits your area of interest. Daily updates on the blog post will be done every week so stay tuned. </h1>
+        </div>
+        {% for blog in blogs %}
+      
+
+        <div class="row ml-1">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="http://via.placeholder.com/800x500" class="img-responsive" width="100%">
+                    </div>
+                    <div class="col-md-8">
+                        <br/>
+                        <span class="sub-article-date">{{ blog.created_at }}</span>
+                        <br/>
+                        <span class="sub-article-title">{{ blog.title }}</span>
+                        <br/>
+                        <span class="sub-article-author">By <span class="author-name">{{ blog.author }}</span></span>
+        
+                        <div class="text-button"></div><a href={% url 'blog_detail' blog.id %} class="demo-link btn btn-info">Read More</a></div>
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+        </div>
+        <hr>
+        
+        {% endfor %}
+    {% endblock %}
+
+
